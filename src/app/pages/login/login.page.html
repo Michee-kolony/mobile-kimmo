@@ -1,0 +1,42 @@
+<ion-header>
+   <ion-progress-bar *ngIf="spinner" type="indeterminate" color="danger"></ion-progress-bar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+ <div class="flex justify-center items-center">
+
+    <div class="h-[400px] w-[300px] md:w-[400px] rounded-xl bg-white mt-[35%] shadow-md">
+       <h4 class="text-center mt-10 text-black font-bold text-[18px]">Se connecter</h4>
+       <form class="mt-[18%] mx-6">
+         <div class="relative text-black">
+            <i class="fa-regular fa-envelope absolute left-5 top-4"></i>
+            <input type="email" [(ngModel)]="email" name="email" class="h-[50px] w-full bg-transparent border border-black  rounded-md text-black pl-[17%]" placeholder="email"/>
+         </div>
+         <div class="relative text-black">
+            <i class="fa-solid fa-lock absolute left-5 top-[60%]"></i>
+            <input type="password"  [(ngModel)]="password" name="password" class="h-[50px] w-full bg-transparent border border-black rounded-md text-black  mt-8 pl-5 pl-[17%]" placeholder="password"/>
+         </div>
+         <div>
+            <button (click)="login()" class="h-[50px] font-bold w-full bg-[#E6007E]  border-2 border-black rounded-md text-white mt-8 shadow-md">
+                <span *ngIf="!spinner">Connexion</span>
+                <ion-spinner *ngIf="spinner" name="dots" color="white"></ion-spinner>
+            </button>
+         </div>
+         <div class="relative  mt-5 text-center text-sm">
+            <a routerLink="/register" class="text-black">Créer un compte</a>
+         </div>
+       </form>
+    </div>
+
+ </div>
+ <div class="flex justify-center items-center gap-5 text-black text-sm mt-[18%]">
+   <a routerLink="/conditions">Conditions d'utilisation</a>
+ </div>
+
+ <div *ngIf="erreur" class="bg-white font-bold  shadow-md absolute top-5 w-[300px] py-4 left-3 z-50 text-red-500 border-b-4 border-red-500 rounded-md flex gap-4 justify-between toast">
+   <p class="mx-5">{{message}}</p>
+ </div>
+ <div *ngIf="success" class="bg-white font-bold  shadow-md absolute top-5 w-[300px] py-4 left-3 z-50 text-green-500 border-b-4 border-green-500 rounded-md flex gap-4 justify-between toast">
+   <p class="mx-5">{{message}}</p>
+ </div>
+</ion-content>

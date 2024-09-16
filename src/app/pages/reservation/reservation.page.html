@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon name="arrow-back" slot="start" class="text-[23px] ml-2" routerLink="/tabs/tab3"></ion-icon>
+    <ion-title class="text-sm">Mes reservations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="pb-5">
+  <div *ngFor="let u of commande" class="mx-5 bg-white rounded-xl shadow-xl h-[400px] mt-5  border grid justify-center items-center text-center text-black cursor-pointer">
+    <div>
+     <img src="{{u.image}}" class="w-[200px] rounded-md"/>
+     <h3 class="mt-5">{{u.titre}}</h3>
+     <h3 class="mt-5 font-bold">{{u.prix}} $</h3>
+     <button class="px-5 py-2 text-white bg-red-700 mt-10 rounded-md" (click)="deletecommande(u._id)">Annuler</button>
+     <p class="text-[10px] mt-5">Reservation du {{u.createdate | date : 'dd MMMM yyyy' }}</p>
+    </div>
+  </div>
+</div>
+</ion-content>

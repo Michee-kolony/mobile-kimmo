@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon name="arrow-back" class="text-[23px] ml-2" routerLink="/tabs/tab1"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ <div class="flex justify-center items-center mt-10">
+      <ion-spinner name="circular" *ngIf="spinner" class="text-center"></ion-spinner>
+   </div>
+    <div class="mx-5 mt-2" *ngIf="article">
+      <img src="{{article.image}}" class="rounded-xl"/>
+    </div>
+    <div class="flex justify-between mx-7 mt-2 py-3">
+      <div class="bg-[#E6007E] text-white px-5 py-2 rounded-md font-bold">
+        {{article.prix}} $
+      </div>
+      <div>
+        <p class="text-[20px] text-sm mt-2">
+        {{article.titre}}
+       </p>
+      </div>
+    </div><hr/>
+    <div class="flex gap-4 justify-center items-center text-center mt-2 text-[12px] py-4">
+      <p class="flex gap-2"><ion-icon name="location-outline" class="text-[16px]"></ion-icon>{{article.localisation}}</p>
+      <p class="flex gap-2"><ion-icon name="calendar-outline" class="text-[16px]"></ion-icon>{{article.createdate | date : 'dd MMMM yyyy'}}</p>
+    </div><hr />
+
+   <div class="h-[350px]">
+    <p class="mx-5 mt-10 text-justify text-sm pb-5">
+      {{article.description}}
+      </p><hr/>
+      <form class="flex justify-center items-center">
+       <div class="relative">
+        <i class="fa-solid fa-phone absolute top-8 left-4"></i>
+        <input type="text" class="border h-[40px] mt-5 w-full px-5 rounded-md pl-10" placeholder="Numéro de téléphone" [(ngModel)]="tel" name="tel"/>
+       </div>
+      </form>
+   </div>
+<div class="flex gap-2 fixed bottom-0 py-4 left-0 right-0 border shadow-md">
+  <button class="bg-[#E6007E] text-white w-full py-4 rounded-md ml-5" (click)="reserver()">
+    <span *ngIf="!res">Reserver</span>
+    <ion-spinner *ngIf="res" name="circles" class="text-white"></ion-spinner>
+  </button>
+  <button class="bg-black text-white w-full py-4 rounded-md mr-5"  (click)="getinfo()">
+    <span *ngIf="!insert">Favoris <i class="fa-solid fa-star"></i></span>
+    <ion-spinner *ngIf="insert" name="circles" class="text-white"></ion-spinner>
+  </button>
+</div>
+</ion-content>

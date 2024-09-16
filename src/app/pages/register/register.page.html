@@ -1,0 +1,58 @@
+<ion-header>
+   <ion-progress-bar *ngIf="spinner" type="indeterminate" color="danger"></ion-progress-bar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+  <div class="flex justify-center items-center text-center pb-5">
+ 
+     <div class="h-[600px] w-[300px] rounded-xl bg-white mt-4 shadow-md">
+        <h4 class="text-center mt-5 text-black font-bold text-[18px]">Créer compte</h4>
+        <form class="mt-7 mx-5">
+          <div class="relative text-black">
+            <i class="fa-solid fa-user absolute left-5 top-5"></i>
+            <input type="text" [(ngModel)]="nom" name="nom"  class="h-[50px] w-full bg-transparent border border-black  rounded-md text-black pl-[17%]" placeholder="Nom"/>
+         </div>
+          <div class="relative text-black">
+             <i class="fa-solid fa-envelope absolute left-5 top-[60%]"></i>
+             <input type="email" [(ngModel)]="email" name="email"   class="h-[50px] w-full bg-transparent border border-black mt-8  rounded-md text-black pl-[17%]" placeholder="Email"/>
+          </div>
+          <div class="relative text-black">
+            <i class="fa-solid fa-flag absolute left-5 top-[60%]"></i>
+            <select  [(ngModel)]="pays" name="pays"  name="pays" class="h-[50px] w-full bg-transparent border border-black rounded-md text-black  mt-8 pl-5 pl-[17%]" placeholder="Confirm password">
+               <option value="">- - Selectionner un pays</option>
+               <option value="rdc">République.Demo.Congo</option>
+               <option value="chypre">Chypre du Nord</option>
+            </select>
+         </div>
+          <div class="relative text-black">
+             <i class="fa-solid fa-lock absolute left-5 top-[60%]"></i>
+             <input type="password" [(ngModel)]="password1" name="password1"   name="password" class="h-[50px] w-full bg-transparent border border-black rounded-md text-black  mt-8 pl-5 pl-[17%]" placeholder="Password"/>
+          </div>
+          <div class="relative text-black">
+            <i class="fa-solid fa-lock absolute left-5 top-[60%]"></i>
+            <input type="password" [(ngModel)]="password" name="password"  name="password2" class="h-[50px] w-full bg-transparent border border-black rounded-md text-black  mt-8 pl-5 pl-[17%]" placeholder="Confirm password"/>
+         </div>
+          <div>
+             <button (click)="register()"  class="h-[50px] font-bold w-full bg-[#E6007E]  border-2 border-black rounded-md text-white mt-8 shadow-md">
+               <span *ngIf="!spinner">Inscription</span>
+               <ion-spinner *ngIf="spinner" name="dots" color="white"></ion-spinner>
+             </button>
+          </div>
+          <div class="relative  mt-5 text-center text-sm" [ngClass]="{'animate-bounce':connecter,}">
+             <a routerLink="/login" class="text-black" [ngClass]="{'font-bold':connecter, 'text-green-500':connecter}">Se connecter</a>
+          </div>
+        </form>
+     </div>
+ 
+  </div>
+ <div class="flex justify-center items-center gap-5 text-black text-sm mt-[8%]">
+   <a routerLink="/conditions">Conditions d'utilisation</a>
+ </div>
+ <div *ngIf="erreur" class="bg-white font-bold  shadow-md absolute top-5 w-[300px] py-4 left-3 z-50 text-red-500 border-b-4 border-red-500 rounded-md flex gap-4 justify-between toast">
+   <p class="mx-5">{{message}}</p>
+ </div>
+ <div *ngIf="success" class="bg-white font-bold  shadow-md absolute top-5 w-[300px] py-4 left-3 z-50 text-green-500 border-b-4 border-green-500 rounded-md flex gap-4 justify-between toast">
+   <p class="mx-5">{{message}}</p>
+ </div>
+ </ion-content>
+ 

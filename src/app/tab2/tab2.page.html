@@ -1,17 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+        <ion-title slot="start" class="text-sm">Mes favoris</ion-title>
     </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div class="grid md:grid-cols-2 mx-4 md:gap-5 mt-5" *ngFor="let favoris of favoris">
+        <div class="h-[300px] overflow-hidden rounded-xl relative z-5">
+          <div class="bg-[#E6007E] text-white px-5 absolute top-3 right-0 z-10 text-sm">
+             {{favoris.prix}}
+          </div>
+           <div class="overflow-hidden">
+             <img src="{{favoris.image}}" class="rounded-xl shadow-xl" routerLink="/details/{{favoris.offre_id}}"/>
+          </div>
+           <div class="flex justify-between mt-2 text-[12px]">
+             <a class="text-[#E6007E]" (click)="deletefavoris(favoris._id)">
+                Supprimer
+             </a>
+           </div>
+        </div>    
+     </div>
 </ion-content>
